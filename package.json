@@ -1,0 +1,48 @@
+{
+  "name": "slippy-tile",
+  "version": "1.4.1",
+  "description": "Helps convert Slippy Map url tile schemas",
+  "main": "index.js",
+  "jsnext:main": "index.js",
+  "scripts": {
+    "test": "npm run lint && jest --coverage",
+    "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md && cat CHANGELOG.md >> README.md",
+    "lint": "tsc && tslint index.ts index.test.ts && documentation lint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenisCarriere/slippy-tile.git"
+  },
+  "author": "Denis Carriere <carriere.denis@gmail.com>",
+  "contributors": [
+    "Denis Carriere <carriere.denis@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DenisCarriere/slippy-tile/issues"
+  },
+  "homepage": "https://github.com/DenisCarriere/slippy-tile#readme",
+  "devDependencies": {
+    "@types/jest": "16.0.1",
+    "documentation": "4.0.0-beta10",
+    "jest-cli": "17.0.3",
+    "tslint": "3.15.1",
+    "typescript": "2.0.10"
+  },
+  "keywords": [
+    "gis",
+    "geo",
+    "geojs",
+    "geospatial",
+    "geography",
+    "map",
+    "url",
+    "slippy",
+    "tile",
+    "slippytile"
+  ],
+  "testEnvironment": "node",
+  "dependencies": {
+    "global-mercator": "1.4.0"
+  }
+}
