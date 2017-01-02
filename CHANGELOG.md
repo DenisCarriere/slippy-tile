@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.2 - 2017-01-01
+
+- Add providers as export
+
 ## 1.4.0 - 2016-12-04
 
 - Added Circle CI tests
