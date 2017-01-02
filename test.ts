@@ -4,7 +4,8 @@ import {Tile} from './index'
 const TILE: Tile = [10, 15, 8]
 
 test('parse.tile', () => {
-  expect(slippyTile.parse([10, 15, 8], 'https://tile.openstreetmap.org/{zoom}/{x}/{y}.png')).toBe('https://tile.openstreetmap.org/8/10/15.png')
+  expect(slippyTile.parse([10, 15, 8], 'https://tile.openstreetmap.org/{zoom}/{x}/{y}.png'))
+    .toBe('https://tile.openstreetmap.org/8/10/15.png')
 })
 
 test('parse', () => {
@@ -19,5 +20,6 @@ test('sample', () => {
 })
 
 test('providers', () => {
-  expect(slippyTile.providers.osm.standard.url).toBe('https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
+  expect(slippyTile.providers.osm.standard.url)
+    .toBe('https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
 })

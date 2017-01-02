@@ -45,5 +45,8 @@
   "testEnvironment": "node",
   "dependencies": {
     "global-mercator": "^1.4.0"
+  },
+  "jest": {
+    "verbose": true
   }
 }

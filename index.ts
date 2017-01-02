@@ -7,7 +7,7 @@ export { providers }
  */
 export interface Provider {
   attribution: string
-  categories: Array<string>
+  categories: string[]
   description: string
   name: string
   format: string
@@ -17,7 +17,7 @@ export interface Provider {
 /**
  * Tile [x, y, zoom]
  */
-export type Tile = [number, number, number] | number[]
+export type Tile = [number, number, number]
 
 /**
  * Substitutes the given tile information [x,y,zoom] to the URL tile scheme.
@@ -74,13 +74,13 @@ export function parseSwitch (url: string) {
 /**
  * Sample an item from a given list
  *
- * @param {Array<any>} collection List of items
- * @returns {string | number} Single item from the list
+ * @param {string[]} collection List of items
+ * @returns {string} Single item from the list
  * @example
  * import * as slippyTile from 'slippy-tile'
  * slippyTile.sample(['a', 'b', 'c'])
  * //='b'
  */
-export function sample (collection: Array<string | number>): string | number {
+export function sample (collection: string[]): string {
   return collection[Math.floor(Math.random() * collection.length)]
 }
