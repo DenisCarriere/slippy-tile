@@ -1,17 +1,6 @@
 import * as mercator from 'global-mercator'
-import * as digitalglobe from './providers/digitalglobe'
-import * as esri from './providers/esri'
-import * as bing from './providers/bing'
-import * as osm from './providers/osm'
-import * as strava from './providers/strava'
-
-export {
-  bing,
-  digitalglobe,
-  esri,
-  osm,
-  strava,
-}
+import * as providers from './providers'
+export { providers }
 
 /**
  * Provider
@@ -95,5 +84,3 @@ export function parseSwitch (url: string) {
 export function sample (collection: Array<string | number>): string | number {
   return collection[Math.floor(Math.random() * collection.length)]
 }
-
-export default parse

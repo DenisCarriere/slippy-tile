@@ -8,8 +8,8 @@ test('parse.tile', () => {
 })
 
 test('parse', () => {
-  expect(!!slippyTile.parse(TILE, slippyTile.osm.standard.url)).toBeTruthy()
-  expect(!!slippyTile.parse(TILE, slippyTile.bing.imagery.url)).toBeTruthy()
+  expect(!!slippyTile.parse(TILE, slippyTile.providers.osm.standard.url)).toBeTruthy()
+  expect(!!slippyTile.parse(TILE, slippyTile.providers.bing.imagery.url)).toBeTruthy()
   // Add {-y} provider
   // Add {bbox} provider
 })
@@ -19,5 +19,5 @@ test('sample', () => {
 })
 
 test('providers', () => {
-  expect(slippyTile.osm.standard.url).toBe('https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
+  expect(slippyTile.providers.osm.standard.url).toBe('https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
 })
