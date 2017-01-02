@@ -23,11 +23,12 @@
   },
   "homepage": "https://github.com/DenisCarriere/slippy-tile#readme",
   "devDependencies": {
-    "@types/jest": "16.0.1",
+    "@types/jest": "^16.0.1",
+    "coveralls": "^2.11.15",
     "documentation": "4.0.0-beta10",
-    "jest-cli": "17.0.3",
-    "tslint": "3.15.1",
-    "typescript": "2.0.10"
+    "jest-cli": "^18.1.0",
+    "tslint": "^4.2.0",
+    "typescript": "^2.0.10"
   },
   "keywords": [
     "gis",
@@ -43,6 +44,6 @@
   ],
   "testEnvironment": "node",
   "dependencies": {
-    "global-mercator": "1.4.0"
+    "global-mercator": "^1.4.0"
   }
 }
