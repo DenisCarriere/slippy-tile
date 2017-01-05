@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0 - 2017-01-05
+
+- Add schema support for WMS, WMTS, ArcGIS & Leaflet
+
 ## 1.4.2 - 2017-01-01
 
 - Add providers as export

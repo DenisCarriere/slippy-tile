@@ -10,19 +10,19 @@ export interface Provider {
   categories: string[]
   description: string
   name: string
-  format: string
+  format: 'png' | 'pbf' | 'webp' | 'jpg'
   url: string
 }
 
 /**
- * Tile [x, y, zoom]
+ * Tile [x, y, z]
  */
 export type Tile = [number, number, number]
 
 /**
- * Substitutes the given tile information [x,y,zoom] to the URL tile scheme.
+ * Substitutes the given tile information [x, y, z] to the URL tile scheme.
  *
- * @param {Tile} tile Tile [x, y, zoom]
+ * @param {Tile} tile Tile [x, y, z]
  * @param {string} url URL Tile scheme or provider unique key
  * @returns {string}
  * @example
@@ -32,12 +32,14 @@ export type Tile = [number, number, number]
  */
 export function parse (tile: Tile, url: string) {
   const [x, y, zoom] = tile
-  url = url.replace(/{(zoom|z)}/, String(zoom))
-  url = url.replace(/{x}/, String(x))
-  url = url.replace(/{y}/, String(y))
+  url = url.replace(/{(zoom|z|level|TileMatrix)}/, String(zoom))
+  url = url.replace(/{(x|TileCol|col)}/, String(x))
+  url = url.replace(/{(y|TileRow|row)}/, String(y))
   url = url.replace(/{height}/, '256')
   url = url.replace(/{width}/, '256')
   url = url.replace(/{proj}/, 'EPSG:3857')
+  url = url.replace(/{Style}/, 'default')
+  url = url.replace(/{TileMatrixSet}/, 'GoogleMapsCompatible')
   if (url.match(/{bbox}/)) { url = url.replace(/{bbox}/, mercator.googleToBBox(tile).join(',')) }
   if (url.match(/{-y}/)) { url = url.replace(/{-y}/, String(mercator.googleToTile(tile)[1])) }
   if (url.match(/{(quadkey|q)}/)) { url = url.replace(/{(quadkey|q)}/, mercator.googleToQuadkey(tile)) }

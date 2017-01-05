@@ -3,6 +3,9 @@
   "rules": {
     "semicolon": [true, "never"],
     "quotemark": [true, "single"],
-    "interface-name": [false]
+    "interface-name": [false],
+    "ordered-imports": [false],
+    "object-literal-sort-keys": false,
+    "max-line-length": [150]
   }
 }
