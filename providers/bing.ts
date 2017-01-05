@@ -7,7 +7,7 @@ export const imagery: Provider = {
     'imagery',
     'world',
   ],
-  url: 'http://ecn.t{switch:0,1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=5250',
+  url: 'https://ecn.t{switch:0,1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=5250',
   description: 'Tiles from Bing',
   attribution: 'Map data © Bing',
   format: 'jpg',
