@@ -3,7 +3,7 @@ import { Provider } from '../index'
 export const hybrid: Provider = {
   attribution: '© DigitalGlobe, © OpenStreetMap, © Mapbox',
   categories: [
-    'digitalgloble',
+    'digitalglobe',
     'dg',
     'imagery',
     'street',

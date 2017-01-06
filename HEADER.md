@@ -42,8 +42,8 @@ const url = slippyTile(tile, 'osm')
 | ESRI USA Topo Maps            | esri.usatopo
 | ESRI World Street Map         | esri.street
 | ESRI World Topographic Map    | esri.topo
-| DigitalGlobe Imagery          | digitalgloble.imagery
-| DigitalGlobe Hybrid           | digitalgloble.hybrid
+| DigitalGlobe Imagery          | digitalglobe.imagery
+| DigitalGlobe Hybrid           | digitalglobe.hybrid
 
 
 ## Scheme
