@@ -12,4 +12,5 @@ export const both: Provider = {
   description: 'Tiles from Strava',
   attribution: 'Map data © Strava',
   format: 'png',
+  type: 'overlay',
 }

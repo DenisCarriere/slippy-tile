@@ -11,6 +11,7 @@ export const standard: Provider = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 export const cycle: Provider = {
   name: 'OSM Cycle Map',
@@ -23,6 +24,7 @@ export const cycle: Provider = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 
 export const hot: Provider = {
@@ -37,6 +39,7 @@ export const hot: Provider = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 
 export const transport: Provider = {
@@ -50,6 +53,7 @@ export const transport: Provider = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 
 export const wikimedia = {
@@ -63,6 +67,7 @@ export const wikimedia = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 
 export const lyrk = {
@@ -76,6 +81,7 @@ export const lyrk = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }
 
 export const mapbox = {
@@ -89,4 +95,5 @@ export const mapbox = {
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
   format: 'png',
+  type: 'baselayer',
 }

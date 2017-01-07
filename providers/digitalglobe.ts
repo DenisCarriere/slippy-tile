@@ -14,6 +14,7 @@ export const hybrid: Provider = {
   name: 'DigitalGlobe Hybrid',
   format: 'png',
   url: 'https://{s}.tiles.mapbox.com/v4/digitalglobe.nal0mpda/{z}/{x}/{y}.png',
+  type: 'baselayer',
 }
 
 export const imagery: Provider = {
@@ -28,4 +29,5 @@ export const imagery: Provider = {
   description: 'Tiles from DigitalGlobe',
   attribution: '© DigitalGlobe',
   format: 'png',
+  type: 'baselayer',
 }

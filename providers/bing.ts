@@ -11,4 +11,5 @@ export const imagery: Provider = {
   description: 'Tiles from Bing',
   attribution: 'Map data © Bing',
   format: 'jpg',
+  type: 'baselayer',
 }
