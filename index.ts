@@ -1,3 +1,4 @@
+import * as url from 'url'
 import * as mercator from 'global-mercator'
 import * as providers from './providers'
 export { providers }
@@ -12,6 +13,7 @@ export interface Provider {
   name: string
   format: 'png' | 'pbf' | 'webp' | 'jpg'
   url: string
+  type: 'baselayer' | 'overlay'
 }
 
 /**
@@ -30,21 +32,21 @@ export type Tile = [number, number, number]
  * slippyTile.parse([10, 15, 8], slippyTile.osm.standard.url)
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
-export function parse (tile: Tile, url: string) {
+export function parse(tile: Tile, href: string) {
   const [x, y, zoom] = tile
-  url = url.replace(/{(zoom|z|level|TileMatrix)}/, String(zoom))
-  url = url.replace(/{(x|TileCol|col)}/, String(x))
-  url = url.replace(/{(y|TileRow|row)}/, String(y))
-  url = url.replace(/{height}/, '256')
-  url = url.replace(/{width}/, '256')
-  url = url.replace(/{proj}/, 'EPSG:3857')
-  url = url.replace(/{Style}/, 'default')
-  url = url.replace(/{TileMatrixSet}/, 'GoogleMapsCompatible')
-  if (url.match(/{bbox}/)) { url = url.replace(/{bbox}/, mercator.googleToBBox(tile).join(',')) }
-  if (url.match(/{-y}/)) { url = url.replace(/{-y}/, String(mercator.googleToTile(tile)[1])) }
-  if (url.match(/{(quadkey|q)}/)) { url = url.replace(/{(quadkey|q)}/, mercator.googleToQuadkey(tile)) }
-  url = parseSwitch(url)
-  return url
+  href = href.replace(/{(zoom|z|level|TileMatrix)}/, String(zoom))
+  href = href.replace(/{(x|TileCol|col)}/, String(x))
+  href = href.replace(/{(y|TileRow|row)}/, String(y))
+  href = href.replace(/{height}/, '256')
+  href = href.replace(/{width}/, '256')
+  href = href.replace(/{proj}/, 'EPSG:3857')
+  href = href.replace(/{Style}/, 'default')
+  href = href.replace(/{TileMatrixSet}/, 'GoogleMapsCompatible')
+  if (href.match(/{bbox}/)) { href = href.replace(/{bbox}/, mercator.googleToBBox(tile).join(',')) }
+  if (href.match(/{-y}/)) { href = href.replace(/{-y}/, String(mercator.googleToTile(tile)[1])) }
+  if (href.match(/{(quadkey|q)}/)) { href = href.replace(/{(quadkey|q)}/, mercator.googleToQuadkey(tile)) }
+  href = parseSwitch(href)
+  return url.parse(href)
 }
 
 /**
@@ -57,7 +59,7 @@ export function parse (tile: Tile, url: string) {
  * slippyTile.parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
  * //='http://tile-b.openstreetmap.fr/hot/{zoom}/{x}/{y}.png'
  */
-export function parseSwitch (url: string) {
+export function parseSwitch(url: string) {
   // Default simple switch
   if (url.match(/{s}/i)) {
     const random = String(sample(['a', 'b', 'c']))
@@ -83,6 +85,6 @@ export function parseSwitch (url: string) {
  * slippyTile.sample(['a', 'b', 'c'])
  * //='b'
  */
-export function sample (collection: string[]): string {
+export function sample(collection: string[]): string {
   return collection[Math.floor(Math.random() * collection.length)]
 }

@@ -44,6 +44,7 @@
   ],
   "testEnvironment": "node",
   "dependencies": {
+    "@types/node": "^6.0.58",
     "global-mercator": "^1.6.0"
   },
   "jest": {
