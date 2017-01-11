@@ -8,7 +8,7 @@ export const both: Provider = {
     'running',
     'world',
   ],
-  url: 'https://globalheat.strava.com/tiles/both/color/{zoom}/{x}/{y}.png',
+  url: 'https://globalheat.strava.com/tiles/both/color/{z}/{x}/{y}.png',
   description: 'Tiles from Strava',
   attribution: 'Map data © Strava',
   format: 'png',

@@ -3,6 +3,7 @@
 
 ## 1.6.0 - 2017-01-11
 
+- Change OSM `{zoom}` to `{z}` as a safer URL
 - Add individual parsing functions for WMS & WMTS
 - Improve typescript handling for `sample`
 
