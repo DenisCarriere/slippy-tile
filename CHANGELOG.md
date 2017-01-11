@@ -1,4 +1,10 @@
+
 # Changelog
+
+## 1.6.0 - 2017-01-11
+
+- Add individual parsing functions for WMS & WMTS
+- Improve typescript handling for `sample`
 
 ## 1.5.0 - 2017-01-05
 

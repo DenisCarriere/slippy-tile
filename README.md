@@ -80,9 +80,48 @@ Substitutes the given tile information [x, y, z] to the URL tile scheme.
 **Examples**
 
 ```javascript
-import * as slippyTile from 'slippy-tile'
-slippyTile.parse([10, 15, 8], slippyTile.osm.standard.url)
+const tile = [10, 15, 8]
+const url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
+slippyTile.parse(tile, url)
 //='https://c.tile.openstreetmap.org/8/10/15.png'
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+# wms
+
+Parse WMS URL to friendly SlippyTile format
+
+**Parameters**
+
+-   `tile` **[Tile](https://en.wikipedia.org/wiki/Tiled_web_map)** Tile [x, y, z]
+-   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** WMTS URL scheme
+
+**Examples**
+
+```javascript
+const tile = [10, 15, 8]
+const url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
+slippyTile.wmts(tile, url)
+//='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+# wmts
+
+Parse WMTS URL to friendly SlippyTile URL format
+
+**Parameters**
+
+-   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** WMTS URL scheme
+
+**Examples**
+
+```javascript
+const url = 'https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg'
+slippyTile.wmts(url)
+//='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
 ```
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
@@ -111,18 +150,23 @@ Sample an item from a given list
 
 **Parameters**
 
--   `collection` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** List of items
+-   `collection` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>** List of items
 
 **Examples**
 
 ```javascript
-import * as slippyTile from 'slippy-tile'
 slippyTile.sample(['a', 'b', 'c'])
 //='b'
 ```
 
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Single item from the list
+Returns **any** Single item from the list
+
 # Changelog
+
+## 1.6.0 - 2017-01-11
+
+- Add individual parsing functions for WMS & WMTS
+- Improve typescript handling for `sample`
 
 ## 1.5.0 - 2017-01-05
 
