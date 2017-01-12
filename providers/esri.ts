@@ -44,7 +44,7 @@ export const usatopo: Provider = {
 }
 
 export const imagery: Provider = {
-  name: 'ESRI World Topographic Map',
+  name: 'ESRI World Imagery',
   categories: [
     'esri',
     'imagery',
@@ -64,7 +64,7 @@ export const street: Provider = {
     'street',
     'world',
   ],
-  url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer/WMTS/tile/1.0.0/World_Topo_Map/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg',
+  url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/WMTS/tile/1.0.0/World_Topo_Map/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg',
   description: 'This map service presents highway-level data for the world and street-level data for North America, Europe, Africa, parts of the Middle East, Asia, and more.',
   attribution: 'Esri, HERE, DeLorme, USGS, Intermap, INCREMENT P, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), MapmyIndia, © OpenStreetMap contributors, and the GIS User Community',
   format: 'jpg',
