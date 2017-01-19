@@ -118,6 +118,7 @@ interface Sample {
 /**
  * Sample an item from a given list
  *
+ * @name sample
  * @param {any[]} collection List of items
  * @returns {any} Single item from the list
  * @example
