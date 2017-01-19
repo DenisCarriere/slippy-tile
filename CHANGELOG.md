@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.7.0 - 2017-01-19
+
+- Support Webpack & Browserify
+- Add HTML examples
+
 ## 1.6.0 - 2017-01-11
 
 - Change OSM `{zoom}` to `{z}` as a safer URL
