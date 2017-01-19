@@ -1,5 +1,21 @@
 import { Provider } from '../index'
 
+export const outdoors: Provider = {
+  name: 'Mapbox Outdoors',
+  categories: [
+    'mapbox',
+    'classic',
+    'outdoors',
+    'topo',
+    'world',
+  ],
+  url: 'https://{s}.tiles.mapbox.com/v4/aj.um7z9lus/{z}/{x}/{y}.png',
+  description: 'Tiles from Mapbox',
+  attribution: '© Mapbox, OpenStreetMap',
+  format: 'png',
+  type: 'overlay',
+}
+
 export const labels: Provider = {
   name: 'Mapbox Labels',
   categories: [
@@ -7,9 +23,9 @@ export const labels: Provider = {
     'labels',
     'world',
   ],
-  url: 'http://{s}.tiles.mapbox.com/v4/openstreetmap.map-inh7ifmo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJncjlmd0t3In0.DmZsIeOW-3x-C5eX-wAqTw',
+  url: 'https://{s}.tiles.mapbox.com/v4/openstreetmap.map-inh7ifmo/{z}/{x}/{y}.png',
   description: 'Tiles from Mapbox',
-  attribution: '© Mapbox',
+  attribution: '© Mapbox, OpenStreetMap',
   format: 'png',
   type: 'overlay',
 }
@@ -21,9 +37,9 @@ export const imagery: Provider = {
     'imagery',
     'world',
   ],
-  url: 'http://{s}.tiles.mapbox.com/v4/openstreetmap.map-inh7ifmo/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJncjlmd0t3In0.DmZsIeOW-3x-C5eX-wAqTw',
+  url: 'https://{s}.tiles.mapbox.com/v4/openstreetmap.map-inh7ifmo/{z}/{x}/{y}.png',
   description: 'Tiles from Mapbox',
-  attribution: '© Mapbox',
+  attribution: '© Mapbox, OpenStreetMap',
   format: 'png',
   type: 'baselayer',
 }
