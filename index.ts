@@ -29,7 +29,7 @@ export type Tile = [number, number, number]
  * @example
  * const tile = [10, 15, 8]
  * const url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
- * slippyTile.parse(tile, url)
+ * parse(tile, url)
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
 export function parse(tile: Tile, url: string) {
@@ -55,7 +55,7 @@ export function parse(tile: Tile, url: string) {
  * @example
  * const tile = [10, 15, 8]
  * const url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
- * slippyTile.wmts(tile, url)
+ * wms(tile, url)
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
 export function wms(tile: Tile, url: string) {
@@ -72,8 +72,7 @@ export function wms(tile: Tile, url: string) {
  * @param {string} url WMTS URL scheme
  * @returns {string}
  * @example
- * const url = 'https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg'
- * slippyTile.wmts(url)
+ * wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
  * //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
  */
 export function wmts(url: string) {
@@ -91,8 +90,7 @@ export function wmts(url: string) {
  * @param {string} url - URL Scheme
  * @returns {string} Parsed URL with switch replaced
  * @example
- * import * as slippyTile from 'slippy-tile'
- * slippyTile.parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
+ * parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
  * //='http://tile-b.openstreetmap.fr/hot/{zoom}/{x}/{y}.png'
  */
 export function parseSwitch(url: string) {
@@ -123,7 +121,7 @@ interface Sample {
  * @param {any[]} collection List of items
  * @returns {any} Single item from the list
  * @example
- * slippyTile.sample(['a', 'b', 'c'])
+ * sample(['a', 'b', 'c'])
  * //='b'
  */
 export const sample: Sample = (collection: any[]) => {
