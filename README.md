@@ -1,4 +1,4 @@
-# [Slippy Tile](https://www.npmjs.com/package/slippy-tile)
+# Slippy Tile
 
 [![Build Status](https://travis-ci.org/DenisCarriere/slippy-tile.svg?branch=master)](https://travis-ci.org/DenisCarriere/slippy-tile)
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/slippy-tile/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/slippy-tile?branch=master)
@@ -11,9 +11,18 @@ Slippy Tile helps parse a Tile scheme URL from a given Tile [x, y, zoom].
 
 ## Install
 
+**npm**
+
 ```bash
 $ npm install --save slippy-tile
 ```
+
+**web browser ([ES6](https://kangax.github.io/compat-table/es6))**
+
+```html
+<script src="https://unpkg.com/slippy-tile/slippy-tile.min.js"></script>
+```
+
 
 ## Quickstart
 

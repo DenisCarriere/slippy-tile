@@ -3,18 +3,10 @@ logs
 *.log
 npm-debug.log*
 
-*.js
-*.js.map
-!webpack.config.js
-!bundle.js
-
 # Runtime data
 pids
 *.pid
 *.seed
-
-slippy-tile.js
-slippy-tile.min.js
 
 yarn.lock
 
