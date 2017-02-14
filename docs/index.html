@@ -13,7 +13,7 @@
   <script>
   const osm = slippyTile.providers.osm.standard.url
   console.log(osm)
-  const url = slippyTile([3, 10, 8], osm)
+  const url = slippyTile.parse([3, 10, 8], osm)
   console.log(url)
   </script>
 </body>
