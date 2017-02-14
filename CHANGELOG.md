@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 1.8.0 - 2017-02-14
+
+- Convert library to ES2015
+
 ## 1.7.0 - 2017-01-19
 
 - Support Webpack & Browserify

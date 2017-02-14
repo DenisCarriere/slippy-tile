@@ -1,10 +1,11 @@
 # [Slippy Tile](https://www.npmjs.com/package/slippy-tile)
 
 [![Build Status](https://travis-ci.org/DenisCarriere/slippy-tile.svg?branch=master)](https://travis-ci.org/DenisCarriere/slippy-tile)
-[![Circle CI](https://circleci.com/gh/DenisCarriere/slippy-tile.svg?style=svg)](https://circleci.com/gh/DenisCarriere/slippy-tile)
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/slippy-tile/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/slippy-tile?branch=master)
 [![npm version](https://badge.fury.io/js/slippy-tile.svg)](https://badge.fury.io/js/slippy-tile)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/slippy-tile/master/LICENSE)
+
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 Slippy Tile helps parse a Tile scheme URL from a given Tile [x, y, zoom].
 
@@ -17,7 +18,7 @@ $ npm install --save slippy-tile
 ## Quickstart
 
 ```javascript
-import slippyTile from 'slippy-tile'
+const slippyTile = require('slippy-tile')
 
 const tile = [10, 15, 8] // x, y, zoom
 const url = slippyTile(tile, 'osm')
