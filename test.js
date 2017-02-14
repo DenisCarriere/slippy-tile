@@ -45,6 +45,6 @@ describe('sample', () => {
 })
 
 describe('providers', () => {
-  test('osm.standard', () => { expect(slippyTile.parse(TILE, slippyTile.providers.osm.standard.url)).toBeDefined() })
+  test('osm.standard', () => { expect(slippyTile.parse(TILE, slippyTile.providers.openstreetmap.standard.url)).toBeDefined() })
   test('bing.imagery', () => { expect(slippyTile.parse(TILE, slippyTile.providers.bing.imagery.url)).toBeDefined() })
 })
