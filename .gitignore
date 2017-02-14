@@ -8,6 +8,8 @@ pids
 *.pid
 *.seed
 
+slippy-tile.js
+slippy-tile.min.js
 yarn.lock
 
 npm-packages-offline-cache

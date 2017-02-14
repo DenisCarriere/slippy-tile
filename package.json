@@ -4,6 +4,13 @@
   "description": "Helps convert Slippy Map url tile schemas",
   "main": "index.js",
   "types": "index.d.js",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "slippy-tile.js",
+    "slippy-tile.min.js",
+    "providers"
+  ],
   "scripts": {
     "prepublish": "npm run test && npm run build",
     "test": "npm run lint && jest --coverage",
