@@ -23,7 +23,6 @@ $ npm install --save slippy-tile
 <script src="https://unpkg.com/slippy-tile/slippy-tile.min.js"></script>
 ```
 
-
 ## Quickstart
 
 ```javascript
@@ -42,24 +41,26 @@ const url = slippyTile(tile, 'osm')
 
 ## Providers
 
-| Name                          | Unique Key           |
-| ----------------------------- | -------------------- |
-| OpenStreetMap Standard        | osm.standard         |
-| OpenStreetMap Cycle Map       | osm.cycle            |
-| OpenStreetMap Humanitarian    | osm.hot              |
-| OpenStreetMap Transport       | osm.transport        |
-| OpenStreetMap Wikimedia       | osm.wikimedia        |
-| OpenStreetMap Lyrk            | osm.lyrk             |
-| Bing Imagery                  | bing.imagery         |
-| Strava Cycling & Running      | strava.both          |
-| National Geographic World Map | esri.natgeo          |
-| ESRI Imagery                  | esri.imagery         |
-| ESRI Ocean Basemap            | esri.ocean           |
-| ESRI USA Topo Maps            | esri.usatopo         |
-| ESRI World Street Map         | esri.street          |
-| ESRI World Topographic Map    | esri.topo            |
-| DigitalGlobe Imagery          | digitalglobe.imagery |
-| DigitalGlobe Hybrid           | digitalglobe.hybrid  |
+| Name                          | Unique Key              |
+| ----------------------------- | ----------------------- |
+| OpenStreetMap Standard        | openstreetmap.standard  |
+| OpenStreetMap Cycle Map       | openstreetmap.cycle     |
+| OpenStreetMap Humanitarian    | openstreetmap.hot       |
+| OpenStreetMap Transport       | openstreetmap.transport |
+| OpenStreetMap Wikimedia       | openstreetmap.wikimedia |
+| OpenStreetMap Lyrk            | openstreetmap.lyrk      |
+| Bing Imagery                  | bing.imagery            |
+| Strava Cycling & Running      | strava.both             |
+| National Geographic World Map | esri.natgeo             |
+| ESRI Imagery                  | esri.imagery            |
+| ESRI Ocean Basemap            | esri.ocean              |
+| ESRI USA Topo Maps            | esri.usatopo            |
+| ESRI World Street Map         | esri.street             |
+| ESRI World Topographic Map    | esri.topo               |
+| DigitalGlobe Imagery          | digitalglobe.imagery    |
+| DigitalGlobe Hybrid           | digitalglobe.hybrid     |
+| Mapbox Imagery                | mapbox.imagery          |
+| Mapbox Outdoors               | mapbox.outdoors         |
 
 ## Scheme
 

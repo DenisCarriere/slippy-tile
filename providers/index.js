@@ -1,6 +1,6 @@
 const bing = require('./bing')
 const esri = require('./esri')
-const osm = require('./openstreetmap')
+const openstreetmap = require('./openstreetmap')
 const strava = require('./strava')
 const digitalglobe = require('./digitalglobe')
 const mapbox = require('./mapbox')
@@ -10,6 +10,6 @@ module.exports = {
   mapbox,
   esri,
   bing,
-  osm,
+  openstreetmap,
   strava
 }
