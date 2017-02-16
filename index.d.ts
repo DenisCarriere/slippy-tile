@@ -7,10 +7,13 @@ export interface Provider {
   url: string
   type: 'baselayer' | 'overlay'
 }
-
-export type Tile = [number, number, number]
-export function parse(tile: Tile, url: string): string
-export function wms(tile: Tile, url: string): string
-export function wmts(url: string): string
-export function parseSwitch(url: string): string
-export function sample<T extends string | number>(collection: T[]): T
+interface Providers {
+  [key: string]: Provider
+}
+export type Tile = [number, number, number];
+export function parse(tile: Tile, url: string): string;
+export function wms(tile: Tile, url: string): string;
+export function wmts(url: string): string;
+export function parseSwitch(url: string): string;
+export function sample<T extends string | number>(collection: T[]): T;
+export declare const providers: Providers;

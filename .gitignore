@@ -8,6 +8,7 @@ pids
 *.pid
 *.seed
 
+types.js
 slippy-tile.js
 slippy-tile.min.js
 yarn.lock
