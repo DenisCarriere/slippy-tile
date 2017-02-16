@@ -8,7 +8,9 @@ export interface Provider {
   type: 'baselayer' | 'overlay'
 }
 interface Providers {
-  [key: string]: Provider
+  [provider: string]: {
+    [service: string]: Provider
+  }
 }
 export type Tile = [number, number, number];
 export function parse(tile: Tile, url: string): string;
