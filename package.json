@@ -1,6 +1,6 @@
 {
   "name": "slippy-tile",
-  "version": "1.8.5",
+  "version": "1.9.0",
   "description": "Helps convert Slippy Map url tile schemas",
   "main": "index.js",
   "types": "index.d.js",

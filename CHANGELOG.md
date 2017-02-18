@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.9.0 - 2017-02-17
+
+- Add case insenstive to replacements
+- Replace `{bbox}` with meters instead of degrees
+
 ## 1.8.0 - 2017-02-14
 
 - Convert library to ES2015

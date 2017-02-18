@@ -5,6 +5,7 @@ const TILE = [10, 15, 8]
 const [x, y, z] = TILE
 const inverseY = mercator.googleToTile(TILE)[1]
 const bbox = mercator.googleToBBox(TILE)
+const bboxMeters = mercator.bboxToMeters(mercator.googleToBBox(TILE))
 const proj = 'EPSG:3857'
 const width = 256
 const height = 256
@@ -34,8 +35,13 @@ describe('parse', () => {
   })
   test('wms', () => {
     expect(slippyTile.parse(TILE,
-    'http://irs.gis-lab.info/?layers=landsat&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}')).toBe(
-    `http://irs.gis-lab.info/?layers=landsat&SRS=${proj}&WIDTH=${width}&HEIGHT=${height}&BBOX=${bbox}`)
+    'http://irs.gis-lab.info/?layers=landsat&SRS={proj}&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}')).toBe(
+    `http://irs.gis-lab.info/?layers=landsat&SRS=${proj}&WIDTH=${width}&HEIGHT=${height}&BBOX=${bboxMeters}`)
+  })
+  test('wms - WGS84', () => {
+    expect(slippyTile.parse(TILE,
+    'http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}')).toBe(
+    `http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH=${width}&HEIGHT=${height}&BBOX=${bbox}`)
   })
   test('error', () => expect(() => slippyTile.parse(TILE, 'http://example.org/{foo}/{bar}')).toThrow())
 })

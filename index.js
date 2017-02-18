@@ -42,10 +42,17 @@ module.exports.parse = parse
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
 function wms (tile, url) {
-  url = url.replace(/{height}/, '256')
-  url = url.replace(/{width}/, '256')
-  url = url.replace(/{proj}/, 'EPSG:3857')
-  if (url.match(/{bbox}/)) { url = url.replace(/{bbox}/, mercator.googleToBBox(tile).join(',')) }
+  url = url.replace(/{height}/gi, '256')
+  url = url.replace(/{width}/gi, '256')
+  url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
+  let bbox
+  if (url.match(/EPSG:3857/i)) {
+    bbox = mercator.bboxToMeters(mercator.googleToBBox(tile))
+  } else {
+    bbox = mercator.googleToBBox(tile)
+  }
+
+  if (url.match(/{bbox}/i)) { url = url.replace(/{bbox}/gi, bbox.join(',')) }
   return url
 }
 module.exports.wms = wms
@@ -60,11 +67,11 @@ module.exports.wms = wms
  * //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
  */
 function wmts (url) {
-  url = url.replace(/{TileCol}/, '{x}')
-  url = url.replace(/{TileRow}/, '{y}')
-  url = url.replace(/{TileMatrix}/, '{z}')
-  url = url.replace(/{TileMatrixSet}/, 'GoogleMapsCompatible')
-  url = url.replace(/{Style}/, 'default')
+  url = url.replace(/{TileCol}/gi, '{x}')
+  url = url.replace(/{TileRow}/gi, '{y}')
+  url = url.replace(/{TileMatrix}/gi, '{z}')
+  url = url.replace(/{TileMatrixSet}/gi, 'GoogleMapsCompatible')
+  url = url.replace(/{Style}/gi, 'default')
   return url
 }
 module.exports.wmts = wmts
@@ -80,12 +87,12 @@ module.exports.wmts = wmts
  */
 function parseSwitch (url) {
   // Default simple switch
-  if (url.match(/{s}/i)) {
+  if (url.match(/{s}/)) {
     const random = String(sample(['a', 'b', 'c']))
-    return url.replace(/{s}/, random)
+    return url.replace(/{s}/gi, random)
   }
   // Custom switch
-  const pattern = /{switch:([a-z,\d]*)}/i
+  const pattern = /{switch:([a-z,\d]*)}/
   const found = url.match(pattern)
   if (found) {
     const random = String(sample(found[1].split(',')))
