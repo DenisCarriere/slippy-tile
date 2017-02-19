@@ -3,7 +3,7 @@ const pkg = require('./package.json')
 
 export default {
   entry: 'index.js',
-  moduleName: 'globalMercator',
+  moduleName: 'slippyTile',
   sourceMap: true,
   plugins: [nodeResolve({jsnext: true})],
   targets: [
