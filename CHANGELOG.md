@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.10.0 - 2017-02-18
+
+- Convert module to ES5
+- Convert project to Rollup
+
 ## 1.9.0 - 2017-02-17
 
 - Add case insenstive to replacements

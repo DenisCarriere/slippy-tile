@@ -1,4 +1,4 @@
-module.exports.outdoors = {
+export const outdoors = {
   name: 'Mapbox Outdoors',
   categories: [
     'mapbox',
@@ -14,7 +14,7 @@ module.exports.outdoors = {
   type: 'overlay'
 }
 
-module.exports.imagery = {
+export const imagery = {
   name: 'Mapbox Imagery',
   categories: [
     'mapbox',

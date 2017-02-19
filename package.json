@@ -1,35 +1,39 @@
 {
   "name": "slippy-tile",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Helps convert Slippy Map url tile schemas",
-  "main": "index.js",
-  "types": "index.d.js",
+  "main": "dist/slippy-tile.js",
+  "browser": "dist/slippy-tile.browser.js",
+  "module": "dist/slippy-tile.es.js",
+  "jsnext:main": "dist/slippy-tile.es.js",
   "files": [
-    "index.js",
     "index.d.ts",
-    "slippy-tile.js",
-    "slippy-tile.min.js",
+    "index.js",
+    "dist",
     "providers"
   ],
   "scripts": {
-    "prepublish": "npm run test && npm run build",
-    "test": "npm run lint && jest --coverage",
+    "prepublish": "npm run test && npm run uglify",
+    "test": "npm run lint && npm run build && jest --coverage",
     "lint": "standard",
     "docs": "documentation readme index.js --section=API",
-    "build": "browserify index.js -s slippy-tile > slippy-tile.js && uglifyjs slippy-tile.js -c -m > slippy-tile.min.js"
+    "build": "rollup -c rollup.config.js",
+    "uglify": "uglifyjs dist/slippy-tile.browser.js -c -m -o dist/slippy-tile.browser.min.js"
   },
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "global-mercator": "^1.6.1"
+    "global-mercator": "^2.0.3"
   },
   "devDependencies": {
-    "browserify": "^13.3.0",
     "coveralls": "^2.11.15",
     "documentation": "^4.0.0-beta.18",
-    "jest-cli": "^18.1.0",
-    "typescript": "^2.1.4",
-    "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony"
+    "jest-cli": "^18.0.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "standard": "^8.6.0",
+    "typescript": "^2.1.5",
+    "uglify-js": "^2.7.5"
   },
   "keywords": [
     "gis",
@@ -48,6 +52,7 @@
     "verbose": true
   },
   "standard": {
-    "env": "jest"
+    "env": "jest",
+    "ignore": "dist"
   }
 }

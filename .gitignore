@@ -9,8 +9,7 @@ pids
 *.seed
 
 types.js
-slippy-tile.js
-slippy-tile.min.js
+dist
 yarn.lock
 
 npm-packages-offline-cache

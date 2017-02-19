@@ -1,11 +1,11 @@
-const bing = require('./bing')
-const esri = require('./esri')
-const openstreetmap = require('./openstreetmap')
-const strava = require('./strava')
-const digitalglobe = require('./digitalglobe')
-const mapbox = require('./mapbox')
+import * as bing from './bing'
+import * as esri from './esri'
+import * as openstreetmap from './openstreetmap'
+import * as strava from './strava'
+import * as digitalglobe from './digitalglobe'
+import * as mapbox from './mapbox'
 
-module.exports = {
+export {
   digitalglobe,
   mapbox,
   esri,

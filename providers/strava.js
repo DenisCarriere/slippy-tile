@@ -1,4 +1,4 @@
-module.exports.both = {
+export const both = {
   name: 'Strava Cycling & Running',
   categories: [
     'strava',

@@ -1,4 +1,4 @@
-module.exports.imagery = {
+export const imagery = {
   name: 'Bing Imagery',
   categories: [
     'bing',
