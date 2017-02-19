@@ -17,7 +17,7 @@ Slippy Tile helps parse a Tile scheme URL from a given Tile [x, y, zoom].
 $ npm install --save slippy-tile
 ```
 
-**web browser ([ES6](https://kangax.github.io/compat-table/es6))**
+**web browser [ES5](https://kangax.github.io/compat-table/es5)**
 
 ```html
 <script src="https://unpkg.com/slippy-tile/slippy-tile.min.js"></script>
@@ -99,8 +99,8 @@ Substitutes the given tile information [x, y, z] to the URL tile scheme.
 **Examples**
 
 ```javascript
-const tile = [10, 15, 8]
-const url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
+var tile = [10, 15, 8]
+var url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
 parse(tile, url)
 //='https://c.tile.openstreetmap.org/8/10/15.png'
 ```
@@ -119,8 +119,8 @@ Parse WMS URL to friendly SlippyTile format
 **Examples**
 
 ```javascript
-const tile = [10, 15, 8]
-const url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
+var tile = [10, 15, 8]
+var url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
 wms(tile, url)
 //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
 ```
