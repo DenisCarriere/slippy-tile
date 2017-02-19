@@ -1,4 +1,4 @@
-export const natgeo = {
+export var natgeo = {
   name: 'ESRI National Geographic World Map',
   categories: [
     'esri',
@@ -13,7 +13,7 @@ export const natgeo = {
   type: 'baselayer'
 }
 
-export const ocean = {
+export var ocean = {
   name: 'ESRI Ocean Basemap',
   categories: [
     'esri',
@@ -27,7 +27,7 @@ export const ocean = {
   type: 'baselayer'
 }
 
-export const usatopo = {
+export var usatopo = {
   name: 'ESRI USA Topo Maps',
   categories: [
     'esri',
@@ -41,7 +41,7 @@ export const usatopo = {
   type: 'baselayer'
 }
 
-export const imagery = {
+export var imagery = {
   name: 'ESRI World Imagery',
   categories: [
     'esri',
@@ -55,7 +55,7 @@ export const imagery = {
   type: 'baselayer'
 }
 
-export const street = {
+export var street = {
   name: 'ESRI World Street Map',
   categories: [
     'esri',
@@ -69,7 +69,7 @@ export const street = {
   type: 'baselayer'
 }
 
-export const topo = {
+export var topo = {
   name: 'ESRI World Topographic Map',
   categories: [
     'esri',

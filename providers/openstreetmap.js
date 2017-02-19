@@ -1,4 +1,4 @@
-export const standard = {
+export var standard = {
   name: 'OpenStreetMap Standard',
   categories: [
     'openstreetmap',
@@ -12,7 +12,7 @@ export const standard = {
   type: 'baselayer'
 }
 
-export const cycle = {
+export var cycle = {
   name: 'OpenStreetMap Cycle Map',
   categories: [
     'openstreetmap',
@@ -26,7 +26,7 @@ export const cycle = {
   type: 'baselayer'
 }
 
-export const hot = {
+export var hot = {
   name: 'OpenStreetMap Humanitarian',
   categories: [
     'openstreetmap',
@@ -41,7 +41,7 @@ export const hot = {
   type: 'baselayer'
 }
 
-export const transport = {
+export var transport = {
   name: 'OpenStreetMap Transport Map',
   categories: [
     'openstreetmap',
@@ -55,7 +55,7 @@ export const transport = {
   type: 'baselayer'
 }
 
-export const wikimedia = {
+export var wikimedia = {
   name: 'OpenStreetMap Wikimedia',
   categories: [
     'openstreetmap',
@@ -69,7 +69,7 @@ export const wikimedia = {
   type: 'baselayer'
 }
 
-export const lyrk = {
+export var lyrk = {
   name: 'OpenStreetMap Lyrk',
   categories: [
     'openstreetmap',

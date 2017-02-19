@@ -1,4 +1,4 @@
-export const outdoors = {
+export var outdoors = {
   name: 'Mapbox Outdoors',
   categories: [
     'mapbox',
@@ -14,7 +14,7 @@ export const outdoors = {
   type: 'overlay'
 }
 
-export const imagery = {
+export var imagery = {
   name: 'Mapbox Imagery',
   categories: [
     'mapbox',

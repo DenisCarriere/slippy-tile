@@ -1,4 +1,4 @@
-export const hybrid = {
+export var hybrid = {
   attribution: '© DigitalGlobe, © OpenStreetMap, © Mapbox',
   categories: [
     'digitalglobe',
@@ -15,7 +15,7 @@ export const hybrid = {
   type: 'baselayer'
 }
 
-export const imagery = {
+export var imagery = {
   name: 'DigitalGlobe Imagery',
   categories: [
     'digitalgloble',
