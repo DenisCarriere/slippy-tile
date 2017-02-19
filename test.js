@@ -48,6 +48,9 @@ describe('parse', () => {
 
 describe('sample', () => {
   test(`['a'] === 'a'`, () => { expect(slippyTile.sample(['a'])).toBe('a') })
+  test('[]', () => { expect(slippyTile.sample([])).toBe(undefined) })
+  test('null', () => { expect(slippyTile.sample(null)).toBe(undefined) })
+  test('undefined', () => { expect(slippyTile.sample(undefined)).toBe(undefined) })
 })
 
 describe('providers', () => {

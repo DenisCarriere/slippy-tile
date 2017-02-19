@@ -9,9 +9,7 @@ export { providers }
  * @param {string} url URL Tile scheme or provider unique key
  * @returns {string}
  * @example
- * var tile = [10, 15, 8]
- * var url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
- * parse(tile, url)
+ * slippyTile.parse([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
 export function parse (tile, url) {
@@ -37,9 +35,7 @@ export function parse (tile, url) {
  * @param {string} url WMTS URL scheme
  * @returns {string}
  * @example
- * var tile = [10, 15, 8]
- * var url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
- * wms(tile, url)
+ * slippyTile.wms([10, 15, 8], 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}')
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
 export function wms (tile, url) {
@@ -63,7 +59,7 @@ export function wms (tile, url) {
  * @param {string} url WMTS URL scheme
  * @returns {string}
  * @example
- * wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
+ * slippyTile.wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
  * //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
  */
 export function wmts (url) {
@@ -81,7 +77,7 @@ export function wmts (url) {
  * @param {string} url - URL Scheme
  * @returns {string} Parsed URL with switch replaced
  * @example
- * parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
+ * slippyTile.parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
  * //='http://tile-b.openstreetmap.fr/hot/{zoom}/{x}/{y}.png'
  */
 export function parseSwitch (url) {
@@ -102,12 +98,13 @@ export function parseSwitch (url) {
  * Sample an item from a given list
  *
  * @name sample
- * @param {any[]} collection List of items
- * @returns {any} Single item from the list
+ * @param {Array} array List of items
+ * @returns {*} Single item from the list
  * @example
- * sample(['a', 'b', 'c'])
+ * slippyTile.sample(['a', 'b', 'c'])
  * //='b'
  */
-export function sample (collection) {
-  return collection[Math.floor(Math.random() * collection.length)]
+export function sample (array) {
+  if (array === null || array === undefined || array.length === 0) { return undefined }
+  return array[Math.floor(Math.random() * array.length)]
 }

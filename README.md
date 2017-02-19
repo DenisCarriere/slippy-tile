@@ -92,9 +92,7 @@ Substitutes the given tile information [x, y, z] to the URL tile scheme.
 **Examples**
 
 ```javascript
-var tile = [10, 15, 8]
-var url = 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
-parse(tile, url)
+slippyTile.parse([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
 //='https://c.tile.openstreetmap.org/8/10/15.png'
 ```
 
@@ -112,9 +110,7 @@ Parse WMS URL to friendly SlippyTile format
 **Examples**
 
 ```javascript
-var tile = [10, 15, 8]
-var url = 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}'
-wms(tile, url)
+slippyTile.wms([10, 15, 8], 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}')
 //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
 ```
 
@@ -131,7 +127,7 @@ Parse WMTS URL to friendly SlippyTile URL format
 **Examples**
 
 ```javascript
-wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
+slippyTile.wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
 //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
 ```
 
@@ -148,7 +144,7 @@ Replaces {switch:a,b,c} with a random sample.
 **Examples**
 
 ```javascript
-parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
+slippyTile.parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
 //='http://tile-b.openstreetmap.fr/hot/{zoom}/{x}/{y}.png'
 ```
 
@@ -160,13 +156,13 @@ Sample an item from a given list
 
 **Parameters**
 
--   `collection` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;any>** List of items
+-   `array` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** List of items
 
 **Examples**
 
 ```javascript
-sample(['a', 'b', 'c'])
+slippyTile.sample(['a', 'b', 'c'])
 //='b'
 ```
 
-Returns **any** Single item from the list
+Returns **Any** Single item from the list
