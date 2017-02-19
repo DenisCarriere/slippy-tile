@@ -1,4 +1,4 @@
-export const imagery = {
+export var imagery = {
   name: 'Bing Imagery',
   categories: [
     'bing',

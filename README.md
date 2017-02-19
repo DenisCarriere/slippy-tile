@@ -17,27 +17,20 @@ Slippy Tile helps parse a Tile scheme URL from a given Tile [x, y, zoom].
 $ npm install --save slippy-tile
 ```
 
-**web browser [ES5](https://kangax.github.io/compat-table/es5)**
+**web browser ([ES5](https://kangax.github.io/compat-table/es5))**
 
 ```html
-<script src="https://unpkg.com/slippy-tile/slippy-tile.min.js"></script>
+<script src="https://unpkg.com/slippy-tile/slippy-tile.browser.js"></script>
 ```
 
 ## Quickstart
 
 ```javascript
-const slippyTile = require('slippy-tile')
-
-const tile = [10, 15, 8] // x, y, zoom
-const url = slippyTile(tile, 'osm')
+var tile = [10, 15, 8] // [x, y, zoom]
+var scheme = 'https://{switch:a,b,c}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'
+var url = slippyTile.parse(tile, scheme)
 //= https://b.tile.openstreetmap.org/8/10/15.png
 ```
-
-## Supports
-
--   [Webpack](https://webpack.js.org/)
--   [Browserify](http://browserify.org/)
--   [ES6 (ES2015)](https://babeljs.io/learn-es2015/)
 
 ## Providers
 
