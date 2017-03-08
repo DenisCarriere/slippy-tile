@@ -1,4 +1,4 @@
-export var natgeo = {
+module.exports.natgeo = {
   name: 'ESRI National Geographic World Map',
   categories: [
     'esri',
@@ -13,7 +13,7 @@ export var natgeo = {
   type: 'baselayer'
 }
 
-export var ocean = {
+module.exports.ocean = {
   name: 'ESRI Ocean Basemap',
   categories: [
     'esri',
@@ -27,7 +27,7 @@ export var ocean = {
   type: 'baselayer'
 }
 
-export var usatopo = {
+module.exports.usatopo = {
   name: 'ESRI USA Topo Maps',
   categories: [
     'esri',
@@ -41,7 +41,7 @@ export var usatopo = {
   type: 'baselayer'
 }
 
-export var imagery = {
+module.exports.imagery = {
   name: 'ESRI World Imagery',
   categories: [
     'esri',
@@ -55,7 +55,7 @@ export var imagery = {
   type: 'baselayer'
 }
 
-export var street = {
+module.exports.street = {
   name: 'ESRI World Street Map',
   categories: [
     'esri',
@@ -69,7 +69,7 @@ export var street = {
   type: 'baselayer'
 }
 
-export var topo = {
+module.exports.topo = {
   name: 'ESRI World Topographic Map',
   categories: [
     'esri',

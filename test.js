@@ -1,11 +1,11 @@
-const slippyTile = require('.')
-const mercator = require('global-mercator')
+const {googleToTile, googleToBBox, bboxToMeters} = require('global-mercator')
+const slippyTile = require('./')
 
 const TILE = [10, 15, 8]
 const [x, y, z] = TILE
-const inverseY = mercator.googleToTile(TILE)[1]
-const bbox = mercator.googleToBBox(TILE)
-const bboxMeters = mercator.bboxToMeters(mercator.googleToBBox(TILE))
+const inverseY = googleToTile(TILE)[1]
+const bbox = googleToBBox(TILE)
+const bboxMeters = bboxToMeters(googleToBBox(TILE))
 const proj = 'EPSG:3857'
 const width = 256
 const height = 256

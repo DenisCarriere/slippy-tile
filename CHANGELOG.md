@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.11.0 - 2017-03-08
+
+- Convert module back to CommonJS
+- Dropped Mapbox, DigitalGlobe & Strava (due to API keys being required)
+
 ## 1.10.0 - 2017-02-18
 
 - Convert module to ES5

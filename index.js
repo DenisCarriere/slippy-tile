@@ -1,6 +1,9 @@
-import { googleToBBox, googleToTile, googleToQuadkey, bboxToMeters } from 'global-mercator'
-import * as providers from './providers'
-export { providers }
+const providers = require('./providers')
+const mercator = require('global-mercator')
+const googleToBBox = mercator.googleToBBox
+const googleToTile = mercator.googleToTile
+const googleToQuadkey = mercator.googleToQuadkey
+const bboxToMeters = mercator.bboxToMeters
 
 /**
  * Substitutes the given tile information [x, y, z] to the URL tile scheme.
@@ -12,7 +15,7 @@ export { providers }
  * slippyTile.parse([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
-export function parse (tile, url) {
+function parse (tile, url) {
   var x = tile[0]
   var y = tile[1]
   var zoom = tile[2]
@@ -31,6 +34,7 @@ export function parse (tile, url) {
 /**
  * Parse WMS URL to friendly SlippyTile format
  *
+ * @private
  * @param {Tile} tile Tile [x, y, z]
  * @param {string} url WMTS URL scheme
  * @returns {string}
@@ -38,7 +42,7 @@ export function parse (tile, url) {
  * slippyTile.wms([10, 15, 8], 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}')
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
-export function wms (tile, url) {
+function wms (tile, url) {
   url = url.replace(/{height}/gi, '256')
   url = url.replace(/{width}/gi, '256')
   url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
@@ -56,13 +60,14 @@ export function wms (tile, url) {
 /**
  * Parse WMTS URL to friendly SlippyTile URL format
  *
+ * @private
  * @param {string} url WMTS URL scheme
  * @returns {string}
  * @example
  * slippyTile.wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
  * //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
  */
-export function wmts (url) {
+function wmts (url) {
   url = url.replace(/{TileCol}/gi, '{x}')
   url = url.replace(/{TileRow}/gi, '{y}')
   url = url.replace(/{TileMatrix}/gi, '{z}')
@@ -74,13 +79,14 @@ export function wmts (url) {
 /**
  * Replaces {switch:a,b,c} with a random sample.
  *
+ * @private
  * @param {string} url - URL Scheme
  * @returns {string} Parsed URL with switch replaced
  * @example
  * slippyTile.parseSwitch('http://tile-{switch:a,b,c}.openstreetmap.fr/hot/{zoom}/{x}/{y}.png')
  * //='http://tile-b.openstreetmap.fr/hot/{zoom}/{x}/{y}.png'
  */
-export function parseSwitch (url) {
+function parseSwitch (url) {
   // Default simple switch
   if (url.match(/{s}/)) {
     return url.replace(/{s}/gi, String(sample(['a', 'b', 'c'])))
@@ -97,6 +103,7 @@ export function parseSwitch (url) {
 /**
  * Sample an item from a given list
  *
+ * @private
  * @name sample
  * @param {Array} array List of items
  * @returns {*} Single item from the list
@@ -104,7 +111,9 @@ export function parseSwitch (url) {
  * slippyTile.sample(['a', 'b', 'c'])
  * //='b'
  */
-export function sample (array) {
+function sample (array) {
   if (array === null || array === undefined || array.length === 0) { return undefined }
   return array[Math.floor(Math.random() * array.length)]
 }
+
+module.exports = {parse, providers, wms, wmts, parseSwitch, sample}
