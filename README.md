@@ -20,7 +20,7 @@ $ npm install --save slippy-tile
 **web browser ([ES5](https://kangax.github.io/compat-table/es5))**
 
 ```html
-<script src="https://unpkg.com/slippy-tile/dist/slippy-tile.browser.js"></script>
+<script src="https://unpkg.com/slippy-tile/docs/slippy-tile.min.js"></script>
 ```
 
 ## Quickstart
