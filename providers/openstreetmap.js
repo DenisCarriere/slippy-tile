@@ -5,6 +5,8 @@ module.exports.standard = {
     'standard',
     'world'
   ],
+  minZoom: 0,
+  maxZoom: 19,
   url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   description: 'Tiles from OpenStreetMap',
   attribution: 'Map data © OpenStreetMap',
@@ -19,6 +21,8 @@ module.exports.cycle = {
     'cycle',
     'world'
   ],
+  minZoom: 0,
+  maxZoom: 19,
   url: 'https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
   description: 'Tiles from OpenStreetMap',
   attribution: 'Map data © OpenStreetMap',
@@ -34,6 +38,8 @@ module.exports.hot = {
     'humanitarian',
     'world'
   ],
+    minZoom: 0,
+  maxZoom: 19,
   url: 'https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png',
   description: 'Tiles from OpenStreetMap',
   attribution: 'Map data © OpenStreetMap',
@@ -48,6 +54,8 @@ module.exports.transport = {
     'transport',
     'world'
   ],
+  minZoom: 0,
+  maxZoom: 19,
   url: 'https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
   description: 'Tiles from OpenStreetMap',
   attribution: 'Map data © OpenStreetMap',
@@ -62,6 +70,8 @@ module.exports.wikimedia = {
     'wikimedia',
     'world'
   ],
+  minZoom: 0,
+  maxZoom: 19,
   url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
   description: 'Tiles from OSM',
   attribution: 'Map data © OSM',
@@ -76,6 +86,8 @@ module.exports.lyrk = {
     'lyrk',
     'world'
   ],
+  minZoom: 0,
+  maxZoom: 19,
   url: 'https://tiles.lyrk.org/ls/{z}/{x}/{y}?apikey=6e8cfef737a140e2a58c8122aaa26077',
   description: 'Tiles from OpenStreetMap',
   attribution: 'Map data © OpenStreetMap',

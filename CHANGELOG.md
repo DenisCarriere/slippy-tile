@@ -1,6 +1,12 @@
 
 # Changelog
 
+## 1.12.0 - 2017-03-15
+
+- Added `minZoom` & `maxZoom` to providers
+- Improve rollup build
+- Added minified build (11KB)
+
 ## 1.11.0 - 2017-03-08
 
 - Convert module back to CommonJS

@@ -6,6 +6,8 @@ export interface Provider {
   format: 'png' | 'pbf' | 'webp' | 'jpg'
   url: string
   type: 'baselayer' | 'overlay'
+  minZoom: number
+  maxZoom: number
 }
 interface Providers {
   [provider: string]: {

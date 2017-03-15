@@ -1,16 +1,16 @@
-const providers = require('./providers')
-const mercator = require('global-mercator')
-const googleToBBox = mercator.googleToBBox
-const googleToTile = mercator.googleToTile
-const googleToQuadkey = mercator.googleToQuadkey
-const bboxToMeters = mercator.bboxToMeters
+var providers = require('./providers')
+var mercator = require('global-mercator')
+var googleToBBox = mercator.googleToBBox
+var googleToTile = mercator.googleToTile
+var googleToQuadkey = mercator.googleToQuadkey
+var bboxToMeters = mercator.bboxToMeters
 
 /**
  * Substitutes the given tile information [x, y, z] to the URL tile scheme.
  *
  * @param {Tile} tile Tile [x, y, z]
  * @param {string} url URL Tile scheme or provider unique key
- * @returns {string}
+ * @returns {string} parsed URL
  * @example
  * slippyTile.parse([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
@@ -34,10 +34,9 @@ function parse (tile, url) {
 /**
  * Parse WMS URL to friendly SlippyTile format
  *
- * @private
  * @param {Tile} tile Tile [x, y, z]
  * @param {string} url WMTS URL scheme
- * @returns {string}
+ * @returns {string} parsed URL
  * @example
  * slippyTile.wms([10, 15, 8], 'https://<Tile Server>/?layers=imagery&SRS={proj}&WIDTH={width}&HEIGHT={height}&BBOX={bbox}')
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
@@ -60,9 +59,8 @@ function wms (tile, url) {
 /**
  * Parse WMTS URL to friendly SlippyTile URL format
  *
- * @private
  * @param {string} url WMTS URL scheme
- * @returns {string}
+ * @returns {string} parsed URL
  * @example
  * slippyTile.wmts('https://<Tile Server>/WMTS/tile/1.0.0/Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')
  * //='https://<Tile Server>/WMTS/tile/1.0.0/Imagery/default/GoogleMapsCompatible/{z}/{y}/{x}.jpg'
@@ -79,7 +77,6 @@ function wmts (url) {
 /**
  * Replaces {switch:a,b,c} with a random sample.
  *
- * @private
  * @param {string} url - URL Scheme
  * @returns {string} Parsed URL with switch replaced
  * @example
@@ -103,7 +100,6 @@ function parseSwitch (url) {
 /**
  * Sample an item from a given list
  *
- * @private
  * @name sample
  * @param {Array} array List of items
  * @returns {*} Single item from the list
@@ -116,4 +112,11 @@ function sample (array) {
   return array[Math.floor(Math.random() * array.length)]
 }
 
-module.exports = {parse, providers, wms, wmts, parseSwitch, sample}
+module.exports = {
+  parse: parse,
+  providers: providers,
+  wms: wms,
+  wmts: wmts,
+  parseSwitch: parseSwitch,
+  sample: sample
+}

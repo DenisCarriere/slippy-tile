@@ -1,8 +1,9 @@
 {
   "name": "slippy-tile",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Helps convert Slippy Map url tile schemas",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
     "index.d.ts",
     "index.js",
@@ -10,17 +11,20 @@
     "providers"
   ],
   "scripts": {
-    "prepublish": "npm run test && npm run rollup",
-    "test": "npm run lint && jest --coverage",
-    "lint": "standard",
-    "benchmark": "node bench.js",
-    "docs": "documentation readme index.js --section=API",
-    "rollup": "rollup -c docs/rollup.config.js"
+    "prepublish": "npm run test && npm run build && npm run docs",
+    "pretest": "npm run lint",
+    "test": "jest test.js --coverage",
+    "bench": "node bench.js",
+    "lint": "standard index.js",
+    "build": "npm run rollup && npm run uglify",
+    "docs": "documentation readme index.js --shallow --section=API --markdown-toc",
+    "rollup": "rollup -c rollup.config.js",
+    "uglify": "uglifyjs docs/slippy-tile.js -c -m > docs/slippy-tile.min.js"
   },
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "global-mercator": "^2.0.3"
+    "global-mercator": "^2.5.0"
   },
   "devDependencies": {
     "benchmark": "^2.1.3",
@@ -33,7 +37,8 @@
     "rollup-plugin-node-builtins": "^2.1.0",
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
-    "standard": "^8.6.0"
+    "standard": "^8.6.0",
+    "uglifyjs": "^2.4.10"
   },
   "keywords": [
     "gis",
