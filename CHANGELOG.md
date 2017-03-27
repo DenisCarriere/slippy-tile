@@ -3,7 +3,7 @@
 
 ## 1.13.0 - 2017-03-27
 
-- Add Toporama WMS as provider (French & English)
+- Add Toporama WMS as provider (English & French "not working")
 
 ## 1.12.0 - 2017-03-15
 
