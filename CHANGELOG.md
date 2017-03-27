@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 1.13.0 - 2017-03-27
+
+- Add Toporama WMS as provider (French & English)
+
 ## 1.12.0 - 2017-03-15
 
 - Added `minZoom` & `maxZoom` to providers
