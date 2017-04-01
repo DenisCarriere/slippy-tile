@@ -1,11 +1,10 @@
 <meta charset="utf-8">
 <title>Slippy Tile</title>
-<script src="slippy-tile.min.js"></script>
+<script src="slippy-tile.js"></script>
 
-<h1>Open Console</h1>
+<h1>Open Console <small>(Ctrl+Shift+i)</small></h1>
 
 <script>
-  var openstreetmap = slippyTile.providers.openstreetmap.standard.url
-  console.log('slippyTile.parse([3, 10, 8], openstreetmap)')
-  console.log(slippyTile.parse([3, 10, 8], openstreetmap))
+  console.log("slippyTile([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')")
+  console.log(slippyTile([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png'))
 </script>

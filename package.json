@@ -1,19 +1,18 @@
 {
   "name": "slippy-tile",
-  "version": "1.13.1",
+  "version": "2.0.0",
   "description": "Helps convert Slippy Map url tile schemas",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
     "index.d.ts",
     "index.js",
-    "docs",
-    "providers"
+    "docs"
   ],
   "scripts": {
     "prepublish": "npm run test && npm run build && npm run docs",
     "pretest": "npm run lint",
-    "test": "jest test.js --coverage",
+    "test": "node test.js",
     "bench": "node bench.js",
     "lint": "standard index.js",
     "build": "npm run rollup && npm run uglify",
@@ -23,23 +22,6 @@
   },
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "global-mercator": "^2.5.0"
-  },
-  "devDependencies": {
-    "benchmark": "^2.1.3",
-    "coveralls": "^2.11.15",
-    "documentation": "^4.0.0-beta.18",
-    "jest-cli": "^18.0.0",
-    "rollup": "^0.41.4",
-    "rollup-plugin-commonjs": "^7.1.0",
-    "rollup-plugin-json": "^2.1.0",
-    "rollup-plugin-node-builtins": "^2.1.0",
-    "rollup-plugin-node-globals": "^1.1.0",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "standard": "^8.6.0",
-    "uglifyjs": "^2.4.10"
-  },
   "keywords": [
     "gis",
     "geo",
@@ -52,12 +34,22 @@
     "tile",
     "slippytile"
   ],
-  "testEnvironment": "node",
-  "jest": {
-    "verbose": true
+  "devDependencies": {
+    "benchmark": "^2.1.3",
+    "coveralls": "^2.11.15",
+    "documentation": "^4.0.0-beta.18",
+    "jest-cli": "^18.0.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.1.0",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-plugin-node-builtins": "^2.1.0",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "standard": "^8.6.0",
+    "tape": "^4.6.3",
+    "uglifyjs": "^2.4.10"
   },
-  "standard": {
-    "env": "jest",
-    "ignore": "docs"
+  "dependencies": {
+    "global-mercator": "^2.6.0"
   }
 }

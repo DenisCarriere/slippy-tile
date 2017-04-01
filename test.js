@@ -1,3 +1,4 @@
+const test = require('tape')
 const {googleToTile, googleToBBox, bboxToMeters} = require('global-mercator')
 const slippyTile = require('./')
 
@@ -12,48 +13,39 @@ const height = 256
 const style = 'default'
 const tileMatrixSet = 'GoogleMapsCompatible'
 
-describe('parse', () => {
-  test('leaflet', () => {
-    expect(slippyTile.parse(TILE,
-    'https://example.org/{z}/{x}/{y}.png')).toBe(
-    `https://example.org/${z}/${x}/${y}.png`)
-  })
-  test('leaflet {-y}', () => {
-    expect(slippyTile.parse(TILE,
-    'https://example.org/{z}/{x}/{-y}.png')).toBe(
-    `https://example.org/${z}/${x}/${inverseY}.png`)
-  })
-  test('arcgis', () => {
-    expect(slippyTile.parse(TILE,
-    'https://example.org/tiles/256/{level}/{col}/{row}')).toBe(
-    `https://example.org/tiles/256/${z}/${x}/${y}`)
-  })
-  test('wmts', () => {
-    expect(slippyTile.parse(TILE,
-    'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/WMTS/tile/1.0.0/World_Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg')).toBe(
-    `https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/WMTS/tile/1.0.0/World_Imagery/${style}/${tileMatrixSet}/${z}/${y}/${x}.jpg`)
-  })
-  test('wms', () => {
-    expect(slippyTile.parse(TILE,
-    'http://irs.gis-lab.info/?layers=landsat&SRS={proj}&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}')).toBe(
-    `http://irs.gis-lab.info/?layers=landsat&SRS=${proj}&WIDTH=${width}&HEIGHT=${height}&BBOX=${bboxMeters}`)
-  })
-  test('wms - WGS84', () => {
-    expect(slippyTile.parse(TILE,
-    'http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}')).toBe(
-    `http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH=${width}&HEIGHT=${height}&BBOX=${bbox}`)
-  })
-  test('error', () => expect(() => slippyTile.parse(TILE, 'http://example.org/{foo}/{bar}')).toThrow())
-})
+test('slippy-tile', t => {
+  t.equal(slippyTile(TILE,
+    'https://example.org/{z}/{x}/{y}.png'),
+    `https://example.org/${z}/${x}/${y}.png`,
+    'simple'
+  )
+  t.equal(slippyTile(TILE,
+    'https://example.org/{z}/{x}/{-y}.png'),
+    `https://example.org/${z}/${x}/${inverseY}.png`,
+    'leaflet {-y}'
+  )
+  t.equal(slippyTile(TILE,
+    'https://example.org/tiles/256/{level}/{col}/{row}'),
+    `https://example.org/tiles/256/${z}/${x}/${y}`,
+    'arcgis'
+  )
 
-describe('sample', () => {
-  test(`['a'] === 'a'`, () => { expect(slippyTile.sample(['a'])).toBe('a') })
-  test('[]', () => { expect(slippyTile.sample([])).toBe(undefined) })
-  test('null', () => { expect(slippyTile.sample(null)).toBe(undefined) })
-  test('undefined', () => { expect(slippyTile.sample(undefined)).toBe(undefined) })
-})
+  t.equal(slippyTile(TILE,
+    'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/WMTS/tile/1.0.0/World_Imagery/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg'),
+    `https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/WMTS/tile/1.0.0/World_Imagery/${style}/${tileMatrixSet}/${z}/${y}/${x}.jpg`,
+    'wmts'
+  )
+  t.equal(slippyTile(TILE,
+    'http://irs.gis-lab.info/?layers=landsat&SRS={proj}&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}'),
+    `http://irs.gis-lab.info/?layers=landsat&SRS=${proj}&WIDTH=${width}&HEIGHT=${height}&BBOX=${bboxMeters}`,
+    'wms'
+  )
 
-describe('providers', () => {
-  test('osm.standard', () => { expect(slippyTile.parse(TILE, slippyTile.providers.openstreetmap.standard.url)).toBeDefined() })
-  test('bing.imagery', () => { expect(slippyTile.parse(TILE, slippyTile.providers.bing.imagery.url)).toBeDefined() })
+  t.equal(slippyTile(TILE,
+    'http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH={Width}&HEIGHT={height}&BBOX={bbox}'),
+    `http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH=${width}&HEIGHT=${height}&BBOX=${bbox}`,
+    'wms - WGS84'
+  )
+  t.throws(() => slippyTile(TILE, 'http://example.org/{foo}/{bar}'))
+  t.end()
 })

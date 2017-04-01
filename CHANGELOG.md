@@ -1,6 +1,12 @@
 
 # Changelog
 
+## 2.0.0 - 2017-04-01
+
+- Performance increase
+- Drop providers in favor of `map-providers`
+- **Breaking** Single function module `parse()` is now the only function for this library.
+
 ## 1.13.0 - 2017-03-27
 
 - Add Toporama WMS as provider (English & French "not working")
