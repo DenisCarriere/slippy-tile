@@ -46,6 +46,12 @@ test('slippy-tile', t => {
     `http://irs.gis-lab.info/?layers=landsat&SRS=EPSG:4326&WIDTH=${width}&HEIGHT=${height}&BBOX=${bbox}`,
     'wms - WGS84'
   )
+  t.equal(slippyTile(TILE,
+    'https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg'),
+    'https://ecn.t2.tiles.virtualearth.net/tiles/a00003232.jpeg',
+    'quadkey'
+  )
+  slippyTile(TILE, 'https://ecn.t{switch:1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg'),
   t.throws(() => slippyTile(TILE, 'http://example.org/{foo}/{bar}'))
   t.end()
 })

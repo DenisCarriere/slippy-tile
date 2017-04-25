@@ -2059,7 +2059,7 @@ function parseSwitch (url) {
     return url.replace(/{s}/gi, String(sample(['a', 'b', 'c'])))
   }
   // Custom switch
-  var pattern = /{switch:([a-z,\d]*)}/gi;
+  var pattern = /{switch:([a-z,\d]*)}/i;
   var found = url.match(pattern);
   if (found) {
     return url.replace(pattern, String(sample(found[1].split(','))))

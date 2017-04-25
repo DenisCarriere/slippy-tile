@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 2.1.0 - 2017-04-24
+
+- Fix Bing Quadkey Regex parsing issue
+
 ## 2.0.0 - 2017-04-01
 
 - Performance increase
