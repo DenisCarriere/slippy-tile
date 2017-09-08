@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 2.2.0 - 2017-09-08
+
+- Remove extra devDependencies
+- Support for NodeJS 4
+
 ## 2.1.0 - 2017-04-24
 
 - Fix Bing Quadkey Regex parsing issue

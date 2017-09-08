@@ -10,24 +10,15 @@
     "docs"
   ],
   "scripts": {
-    "prepublish": "npm run test && npm run build && npm run docs",
-    "pretest": "npm run lint",
-    "test": "node test.js",
-    "bench": "node bench.js",
     "lint": "standard index.js",
-    "build": "npm run rollup && npm run uglify",
-    "docs": "documentation readme index.js --shallow --section=API --markdown-toc",
-    "rollup": "rollup -c rollup.config.js",
-    "uglify": "uglifyjs docs/slippy-tile.js -c -m > docs/slippy-tile.min.js"
+    "test": "tap test.js --coverage"
   },
-  "author": "Denis Carriere <carriere.denis@gmail.com>",
+  "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
   "keywords": [
     "gis",
     "geo",
-    "geojs",
     "geospatial",
-    "geography",
     "map",
     "url",
     "slippy",
@@ -35,21 +26,11 @@
     "slippytile"
   ],
   "devDependencies": {
-    "benchmark": "^2.1.3",
-    "coveralls": "^2.11.15",
-    "documentation": "^4.0.0-beta.18",
-    "jest-cli": "^18.0.0",
-    "rollup": "^0.41.4",
-    "rollup-plugin-commonjs": "^7.1.0",
-    "rollup-plugin-json": "^2.1.0",
-    "rollup-plugin-node-builtins": "^2.1.0",
-    "rollup-plugin-node-globals": "^1.1.0",
-    "rollup-plugin-node-resolve": "^2.0.0",
     "standard": "^8.6.0",
-    "tape": "^4.6.3",
-    "uglifyjs": "^2.4.10"
+    "tap": "^10.7.2",
+    "tape": "^4.6.3"
   },
   "dependencies": {
-    "global-mercator": "^2.6.0"
+    "global-mercator": "^2.8.4"
   }
 }

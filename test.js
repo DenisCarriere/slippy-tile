@@ -1,9 +1,14 @@
 const test = require('tape')
-const {googleToTile, googleToBBox, bboxToMeters} = require('global-mercator')
+const mercator = require('global-mercator')
+const googleToTile = mercator.googleToTile
+const googleToBBox = mercator.googleToBBox
+const bboxToMeters = mercator.bboxToMeters
 const slippyTile = require('./')
 
-const TILE = [10, 15, 8]
-const [x, y, z] = TILE
+const x = 10
+const y = 15
+const z = 8
+const TILE = [x, y, z]
 const inverseY = googleToTile(TILE)[1]
 const bbox = googleToBBox(TILE)
 const bboxMeters = bboxToMeters(googleToBBox(TILE))
@@ -51,7 +56,7 @@ test('slippy-tile', t => {
     'https://ecn.t2.tiles.virtualearth.net/tiles/a00003232.jpeg',
     'quadkey'
   )
-  slippyTile(TILE, 'https://ecn.t{switch:1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg'),
+  slippyTile(TILE, 'https://ecn.t{switch:1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg')
   t.throws(() => slippyTile(TILE, 'http://example.org/{foo}/{bar}'))
   t.end()
 })

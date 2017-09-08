@@ -92,15 +92,12 @@ function wmts (url) {
  */
 function parseSwitch (url) {
   // Default simple switch
-  if (url.match(/{s}/gi)) {
-    return url.replace(/{s}/gi, String(sample(['a', 'b', 'c'])))
-  }
+  if (url.match(/{s}/gi)) return url.replace(/{s}/gi, String(sample(['a', 'b', 'c'])))
+
   // Custom switch
   var pattern = /{switch:([a-z,\d]*)}/i
   var found = url.match(pattern)
-  if (found) {
-    return url.replace(pattern, String(sample(found[1].split(','))))
-  }
+  if (found) return url.replace(pattern, String(sample(found[1].split(','))))
   return url
 }
 
