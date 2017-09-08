@@ -1,8 +1,15 @@
-var mercator = require('global-mercator')
-var googleToBBox = mercator.googleToBBox
-var googleToTile = mercator.googleToTile
-var googleToQuadkey = mercator.googleToQuadkey
-var bboxToMeters = mercator.bboxToMeters
+const mercator = require('global-mercator')
+const googleToBBox = mercator.googleToBBox
+const googleToTile = mercator.googleToTile
+const googleToQuadkey = mercator.googleToQuadkey
+const bboxToMeters = mercator.bboxToMeters
+
+/**
+ * @typedef {Object} Options
+ * @property {string} layer
+ * @property {string} version
+ * @property {string} [format='image/png']
+ */
 
 /**
  * Substitutes the given tile information [x, y, z] to the URL tile scheme.
@@ -10,24 +17,36 @@ var bboxToMeters = mercator.bboxToMeters
  * @name slippyTile
  * @param {Tile} tile Tile [x, y, z]
  * @param {string} url URL Tile scheme or provider unique key
+ * @param {Options} options Additional options
  * @returns {string} parsed URL
  * @example
  * slippyTile([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
-module.exports = function (tile, url) {
-  var x = tile[0]
-  var y = tile[1]
-  var zoom = tile[2]
+module.exports = function (tile, url, options) {
+  options = options || {}
+  const format = options.format || 'image/png'
+  const x = tile[0]
+  const y = tile[1]
+  const zoom = tile[2]
   url = wms(tile, url)
   url = wmts(url)
   url = parseSwitch(url)
   url = url.replace(/{(zoom|z|level)}/gi, String(zoom))
   url = url.replace(/{(x|col)}/gi, String(x))
   url = url.replace(/{(y|row)}/gi, String(y))
+  url = url.replace(/{format}/gi, format)
+
+  // Replace all additional options
+  Object.keys(options).forEach(key => {
+    const pattern = RegExp('{' + key + '}', 'ig')
+    if (url.match(pattern)) {
+      if (options[key] === undefined) throw new Error('options.' + key + ' is required')
+      url = url.replace(pattern, options[key])
+    }
+  })
   if (url.match(/{-y}/)) url = url.replace(/{-y}/gi, String(googleToTile(tile)[1]))
   if (url.match(/{(quadkey|q)}/)) url = url.replace(/{(quadkey|q)}/gi, googleToQuadkey(tile))
-  if (url.match(/{.*}/)) throw new Error('Could not completly parse URL' + url)
   return url
 }
 

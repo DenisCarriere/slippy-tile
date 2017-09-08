@@ -48,6 +48,7 @@ You can provide your own scheme by following the same syntax as JOSM.
 -   `{height}` default = 256
 -   `{width}`: default = 256
 -   `{proj}`: default = EPSG:3857
+-   `{format}`: default = image/png
 
 ## API
 
@@ -59,7 +60,7 @@ Substitutes the given tile information [x, y, z] to the URL tile scheme.
 
 -   `tile` **Tile** Tile [x, y, z]
 -   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** URL Tile scheme or provider unique key
-
+-   `options` **Object** Additional params
 **Examples**
 
 ```javascript

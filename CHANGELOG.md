@@ -3,6 +3,8 @@
 
 ## 2.2.0 - 2017-09-08
 
+- Dropped throw errors on uncomplete parsed URL
+- Add extra optional params
 - Remove extra devDependencies
 - Support for NodeJS 4
 

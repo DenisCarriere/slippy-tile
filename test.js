@@ -56,7 +56,16 @@ test('slippy-tile', t => {
     'https://ecn.t2.tiles.virtualearth.net/tiles/a00003232.jpeg',
     'quadkey'
   )
+  const options = {
+    format: 'image/png',
+    layer: 'FooLayer',
+    version: '1.3.0'
+  }
+  t.equal(slippyTile(TILE,
+    'http://hostname/?service=WMS&request=GetMap&version={Version}&layers={Layer}&transparent=false&format={format}&height={height}&width={width}&srs={srs}&bbox={bbox}', options),
+    'http://hostname/?service=WMS&request=GetMap&version=1.3.0&layers=FooLayer&transparent=false&format=image/png&height=256&width=256&srs=EPSG:3857&bbox=-18472078,17532819.8,-18315535,17689362.6',
+    'ogc.wms'
+  )
   slippyTile(TILE, 'https://ecn.t{switch:1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg')
-  t.throws(() => slippyTile(TILE, 'http://example.org/{foo}/{bar}'))
   t.end()
 })
