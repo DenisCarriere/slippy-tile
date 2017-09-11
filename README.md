@@ -49,6 +49,7 @@ You can provide your own scheme by following the same syntax as JOSM.
 -   `{switch:1,2,3}`: Selects a random sample
 -   `{height}` default = 256
 -   `{width}`: default = 256
+-   `{size}`: default = 256,256
 -   `{proj}`: default = EPSG:3857
 -   `{format}`: default = image/png
 
