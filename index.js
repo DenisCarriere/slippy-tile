@@ -67,14 +67,12 @@ function wms (tile, url) {
     url = url.replace(/{width}/gi, '256')
     url = url.replace(/{size}/gi, '256,256')
     url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
-    var bbox
-    if (url.match(/EPSG:(3857|900913)/i)) {
-      bbox = bboxToMeters(googleToBBox(tile))
-    } else {
-      bbox = googleToBBox(tile)
-    }
-
-    if (url.match(/{bbox}/i)) { url = url.replace(/{bbox}/gi, bbox.join(',')) }
+    const bbox = googleToBBox(tile)
+    const bboxMeters = bboxToMeters(bbox)
+    if (url.match(/EPSG:(3857|900913)/i) && url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bboxMeters.join(','))
+    if (url.match(/{bbox4326}/i)) url = url.replace(/{bbox4326}/gi, bbox.join(','))
+    if (url.match(/{bbox3857}/i)) url = url.replace(/{bbox3857}/gi, bboxMeters.join(','))
+    if (url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bbox.join(','))
   }
   return url
 }

@@ -1,6 +1,13 @@
 
 # Changelog
 
+## 2.3.0 - 2017-09-11
+
+- Add new replacers
+  - `{bbox4326}`: GeoJSON Bounding Box using EPSG:4326 (WGS84)
+  - `{bbox3857}`: GeoJSON Bounding Box using EPSG:3857 (World Mercator)
+  - `{size}`: default = 256,256
+
 ## 2.2.0 - 2017-09-08
 
 - Dropped throw errors on uncomplete parsed URL

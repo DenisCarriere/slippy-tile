@@ -66,6 +66,11 @@ test('slippy-tile', t => {
     'http://hostname/?service=WMS&request=GetMap&version=1.3.0&layers=FooLayer&transparent=false&format=image/png&height=256&width=256&srs=EPSG:3857&bbox=-18472078,17532819.8,-18315535,17689362.6',
     'ogc.wms'
   )
+  t.equal(slippyTile([0, 0, 0],
+    'https://services.arcgisonline.com/arcgis/rest/services/ESRI_Imagery_World_2D/MapServer/export?bbox={bbox4326}&bboxSR=EPSG:4326&imageSR={srs}&size={size}&format=png&transparent=true&f=image', options),
+    'https://services.arcgisonline.com/arcgis/rest/services/ESRI_Imagery_World_2D/MapServer/export?bbox=-180,-85.051129,180,85.051129&bboxSR=EPSG:4326&imageSR=EPSG:3857&size=256,256&format=png&transparent=true&f=image',
+    'ESRI_Imagery_World_2D'
+  )
   slippyTile(TILE, 'https://ecn.t{switch:1,2,3}.tiles.virtualearth.net/tiles/a{quadkey}.jpeg')
   t.end()
 })

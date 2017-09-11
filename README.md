@@ -45,6 +45,8 @@ You can provide your own scheme by following the same syntax as JOSM.
 -   `{-y}`: Tile Row for TMS scheme
 -   `{zoom}` or `{z}` or `{TileMatrix}`: Zoom Level
 -   `{bbox}`: GeoJSON Bounding Box
+-   `{bbox4326}`: GeoJSON Bounding Box using EPSG:4326 (WGS84)
+-   `{bbox3857}`: GeoJSON Bounding Box using EPSG:3857 (World Mercator)
 -   `{quadkey}` or `{q}`: Microsoft's Quadkey
 -   `{switch:1,2,3}`: Selects a random sample
 -   `{height}` default = 256
