@@ -62,18 +62,17 @@ module.exports = function (tile, url, options) {
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
 function wms (tile, url) {
-  if (url.match(/{height|width|proj|srs|crs|bbox}/gi)) {
-    url = url.replace(/{height}/gi, '256')
-    url = url.replace(/{width}/gi, '256')
-    url = url.replace(/{size}/gi, '256,256')
-    url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
-    const bbox = googleToBBox(tile)
-    const bboxMeters = bboxToMeters(bbox)
-    if (url.match(/EPSG:(3857|900913)/i) && url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bboxMeters.join(','))
-    if (url.match(/{bbox4326}/i)) url = url.replace(/{bbox4326}/gi, bbox.join(','))
-    if (url.match(/{bbox3857}/i)) url = url.replace(/{bbox3857}/gi, bboxMeters.join(','))
-    if (url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bbox.join(','))
-  }
+  url = url.replace(/{height}/gi, '256')
+  url = url.replace(/{width}/gi, '256')
+  url = url.replace(/{size}/gi, '256,256')
+  url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
+  const bbox = googleToBBox(tile)
+  const bboxMeters = bboxToMeters(bbox)
+
+  if (url.match(/EPSG:(3857|900913)/i) && url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bboxMeters.join(','))
+  url = url.replace(/{bbox4326}/gi, bbox.join(','))
+  url = url.replace(/{bbox3857}/gi, bboxMeters.join(','))
+  url = url.replace(/{bbox}/gi, bbox.join(','))
   return url
 }
 
