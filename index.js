@@ -65,6 +65,7 @@ function wms (tile, url) {
   if (url.match(/{height|width|proj|srs|crs|bbox}/gi)) {
     url = url.replace(/{height}/gi, '256')
     url = url.replace(/{width}/gi, '256')
+    url = url.replace(/{size}/gi, '256,256')
     url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
     var bbox
     if (url.match(/EPSG:(3857|900913)/i)) {
