@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 3.0.0 - 2017-09-29
+
+- Support ES Modules
+
 ## 2.3.0 - 2017-09-11
 
 - Add new replacers

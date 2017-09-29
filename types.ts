@@ -1,4 +1,4 @@
-import * as slippyTile from './'
+import slippyTile from './'
 
 const options = {
   layer: 'bar',

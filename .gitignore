@@ -3,6 +3,8 @@ logs
 *.log
 npm-debug.log*
 
+.esm-cache
+slippy-tile.js
 # Runtime data
 pids
 *.pid

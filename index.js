@@ -1,15 +1,4 @@
-const mercator = require('global-mercator')
-const googleToBBox = mercator.googleToBBox
-const googleToTile = mercator.googleToTile
-const googleToQuadkey = mercator.googleToQuadkey
-const bboxToMeters = mercator.bboxToMeters
-
-/**
- * @typedef {Object} Options
- * @property {string} layer
- * @property {string} version
- * @property {string} [format='image/png']
- */
+import { googleToBBox, googleToTile, googleToQuadkey, bboxToMeters } from 'global-mercator'
 
 /**
  * Substitutes the given tile information [x, y, z] to the URL tile scheme.
@@ -17,13 +6,16 @@ const bboxToMeters = mercator.bboxToMeters
  * @name slippyTile
  * @param {Tile} tile Tile [x, y, z]
  * @param {string} url URL Tile scheme or provider unique key
- * @param {Options} options Additional options
+ * @param {Object} [options] Additional options
+ * @param {string} [options.layer] Layer
+ * @param {string} [options.version] Version
+ * @param {string} [format='image/png'] Image Format
  * @returns {string} parsed URL
  * @example
  * slippyTile([10, 15, 8], 'https://{s}.tile.openstreetmap.org/{zoom}/{x}/{y}.png')
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
-module.exports = function (tile, url, options) {
+export default function slippyTile (tile, url, options) {
   options = options || {}
   const format = options.format || 'image/png'
   const x = tile[0]
