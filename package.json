@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "pretest": "rollup -f cjs -o slippy-tile.js index.js",
-    "test": "node test.js",
+    "test": "tap test.js --coverage",
     "posttest": "standard index.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "rollup": "*",
     "standard": "*",
-    "tape": "*"
+    "tap": "*"
   },
   "dependencies": {
     "global-mercator": "*"

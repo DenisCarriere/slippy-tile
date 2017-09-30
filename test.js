@@ -1,4 +1,4 @@
-const test = require('tape')
+const test = require('tap').test
 const mercator = require('global-mercator')
 const googleToTile = mercator.googleToTile
 const googleToBBox = mercator.googleToBBox
