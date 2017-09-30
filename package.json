@@ -12,8 +12,8 @@
     "slippy-tile.js"
   ],
   "scripts": {
-    "pretest": "rollup -f cjs -o slippy-tile.js index.js",
-    "test": "tap test.js --coverage",
+    "pretest": "rollup -c rollup.config.js",
+    "test": "node -r @std/esm test.js",
     "posttest": "standard index.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
@@ -29,11 +29,16 @@
     "slippytile"
   ],
   "devDependencies": {
+    "@std/esm": "*",
     "rollup": "*",
     "standard": "*",
-    "tap": "*"
+    "tape": "*"
   },
   "dependencies": {
     "global-mercator": "*"
+  },
+  "@std/esm": {
+    "esm": "js",
+    "cjs": true
   }
 }

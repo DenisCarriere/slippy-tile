@@ -1,9 +1,6 @@
-const test = require('tap').test
-const mercator = require('global-mercator')
-const googleToTile = mercator.googleToTile
-const googleToBBox = mercator.googleToBBox
-const bboxToMeters = mercator.bboxToMeters
-const slippyTile = require('./')
+import test from 'tape'
+import { googleToTile, googleToBBox, bboxToMeters } from 'global-mercator'
+import slippyTile from './'
 
 const x = 10
 const y = 15
