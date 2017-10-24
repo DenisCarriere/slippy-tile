@@ -12,7 +12,7 @@
     "main.js"
   ],
   "scripts": {
-    "prepublish": "rollup -c rollup.config.js",
+    "prepublish": "rollup -c rollup.config.js  && echo 'module.exports.default = slippyTile;' >> main.js",
     "pretest": "standard index.js && npm run prepublish",
     "test": "node -r @std/esm test.js",
     "posttest": "tsc types.ts && node types.js"
