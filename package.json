@@ -2,19 +2,20 @@
   "name": "slippy-tile",
   "version": "3.0.0",
   "description": "Helps convert Slippy Map url tile schemas",
-  "main": "slippy-tile.js",
-  "module": "index.js",
-  "jsnext:main": "index.js",
+  "main": "main",
+  "module": "index",
+  "jsnext:main": "index",
   "types": "index.d.ts",
   "files": [
     "index.d.ts",
     "index.js",
-    "slippy-tile.js"
+    "main.js"
   ],
   "scripts": {
-    "pretest": "rollup -c rollup.config.js",
+    "prepublish": "rollup -c rollup.config.js",
+    "pretest": "standard index.js && npm run prepublish",
     "test": "node -r @std/esm test.js",
-    "posttest": "standard index.js"
+    "posttest": "tsc types.ts && node types.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",

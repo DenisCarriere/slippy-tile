@@ -1,4 +1,6 @@
-import { googleToBBox, googleToTile, googleToQuadkey, bboxToMeters } from 'global-mercator'
+'use strict';
+
+var globalMercator = require('global-mercator');
 
 /**
  * Substitutes the given tile information [x, y, z] to the URL tile scheme.
@@ -16,29 +18,29 @@ import { googleToBBox, googleToTile, googleToQuadkey, bboxToMeters } from 'globa
  * //='https://c.tile.openstreetmap.org/8/10/15.png'
  */
 function slippyTile (tile, url, options) {
-  options = options || {}
-  const format = options.format || 'image/png'
-  const x = tile[0]
-  const y = tile[1]
-  const zoom = tile[2]
-  url = wms(tile, url)
-  url = wmts(url)
-  url = parseSwitch(url)
-  url = url.replace(/{(zoom|z|level)}/gi, String(zoom))
-  url = url.replace(/{(x|col)}/gi, String(x))
-  url = url.replace(/{(y|row)}/gi, String(y))
-  url = url.replace(/{format}/gi, format)
+  options = options || {};
+  const format = options.format || 'image/png';
+  const x = tile[0];
+  const y = tile[1];
+  const zoom = tile[2];
+  url = wms(tile, url);
+  url = wmts(url);
+  url = parseSwitch(url);
+  url = url.replace(/{(zoom|z|level)}/gi, String(zoom));
+  url = url.replace(/{(x|col)}/gi, String(x));
+  url = url.replace(/{(y|row)}/gi, String(y));
+  url = url.replace(/{format}/gi, format);
 
   // Replace all additional options
   Object.keys(options).forEach(key => {
-    const pattern = RegExp('{' + key + '}', 'ig')
+    const pattern = RegExp('{' + key + '}', 'ig');
     if (url.match(pattern)) {
       if (options[key] === undefined) throw new Error('options.' + key + ' is required')
-      url = url.replace(pattern, options[key])
+      url = url.replace(pattern, options[key]);
     }
-  })
-  if (url.match(/{-y}/)) url = url.replace(/{-y}/gi, String(googleToTile(tile)[1]))
-  if (url.match(/{(quadkey|q)}/)) url = url.replace(/{(quadkey|q)}/gi, googleToQuadkey(tile))
+  });
+  if (url.match(/{-y}/)) url = url.replace(/{-y}/gi, String(globalMercator.googleToTile(tile)[1]));
+  if (url.match(/{(quadkey|q)}/)) url = url.replace(/{(quadkey|q)}/gi, globalMercator.googleToQuadkey(tile));
   return url
 }
 
@@ -54,17 +56,17 @@ function slippyTile (tile, url, options) {
  * //='https://<Tile Server>/?layers=imagery&SRS=EPSG:3857&WIDTH=256&HEIGHT=256&BBOX=-165.9375,82.676285,-164.53125,82.853382'
  */
 function wms (tile, url) {
-  url = url.replace(/{height}/gi, '256')
-  url = url.replace(/{width}/gi, '256')
-  url = url.replace(/{size}/gi, '256,256')
-  url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857')
-  const bbox = googleToBBox(tile)
-  const bboxMeters = bboxToMeters(bbox)
+  url = url.replace(/{height}/gi, '256');
+  url = url.replace(/{width}/gi, '256');
+  url = url.replace(/{size}/gi, '256,256');
+  url = url.replace(/{(proj|srs|crs)}/gi, 'EPSG:3857');
+  const bbox = globalMercator.googleToBBox(tile);
+  const bboxMeters = globalMercator.bboxToMeters(bbox);
 
-  if (url.match(/EPSG:(3857|900913)/i) && url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bboxMeters.join(','))
-  url = url.replace(/{bbox4326}/gi, bbox.join(','))
-  url = url.replace(/{bbox3857}/gi, bboxMeters.join(','))
-  url = url.replace(/{bbox}/gi, bbox.join(','))
+  if (url.match(/EPSG:(3857|900913)/i) && url.match(/{bbox}/i)) url = url.replace(/{bbox}/gi, bboxMeters.join(','));
+  url = url.replace(/{bbox4326}/gi, bbox.join(','));
+  url = url.replace(/{bbox3857}/gi, bboxMeters.join(','));
+  url = url.replace(/{bbox}/gi, bbox.join(','));
   return url
 }
 
@@ -80,11 +82,11 @@ function wms (tile, url) {
  */
 function wmts (url) {
   if (url.match(/{TileCol|TileRow|TileMatrix|TileMatrixSet|Style}/gi)) {
-    url = url.replace(/{TileCol}/gi, '{x}')
-    url = url.replace(/{TileRow}/gi, '{y}')
-    url = url.replace(/{TileMatrix}/gi, '{z}')
-    url = url.replace(/{TileMatrixSet}/gi, 'GoogleMapsCompatible')
-    url = url.replace(/{Style}/gi, 'default')
+    url = url.replace(/{TileCol}/gi, '{x}');
+    url = url.replace(/{TileRow}/gi, '{y}');
+    url = url.replace(/{TileMatrix}/gi, '{z}');
+    url = url.replace(/{TileMatrixSet}/gi, 'GoogleMapsCompatible');
+    url = url.replace(/{Style}/gi, 'default');
   }
   return url
 }
@@ -104,8 +106,8 @@ function parseSwitch (url) {
   if (url.match(/{s}/gi)) return url.replace(/{s}/gi, String(sample(['a', 'b', 'c'])))
 
   // Custom switch
-  var pattern = /{switch:([a-z,\d]*)}/i
-  var found = url.match(pattern)
+  var pattern = /{switch:([a-z,\d]*)}/i;
+  var found = url.match(pattern);
   if (found) return url.replace(pattern, String(sample(found[1].split(','))))
   return url
 }
@@ -126,4 +128,5 @@ function sample (array) {
   return array[Math.floor(Math.random() * array.length)]
 }
 
-export default slippyTile
+module.exports = slippyTile;
+module.exports.default = slippyTile;

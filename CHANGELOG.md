@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 3.0.1 - 2017-10-23
+
+- Fix Typescript export default
+
 ## 3.0.0 - 2017-09-29
 
 - Support ES Modules
