@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 4.0.0 - 2018-02-21
+
+- Convert entire repo to Typescript
+- Enforce strict Typescript configs & linting
+
 ## 3.0.1 - 2017-10-23
 
 - Fix Typescript export default

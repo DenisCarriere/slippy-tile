@@ -1,21 +1,16 @@
 {
   "name": "slippy-tile",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Helps convert Slippy Map url tile schemas",
-  "main": "main",
-  "module": "index",
-  "jsnext:main": "index",
-  "types": "index.d.ts",
+  "main": "index",
   "files": [
-    "index.d.ts",
     "index.js",
-    "main.js"
+    "index.ts"
   ],
   "scripts": {
-    "prepublish": "rollup -c rollup.config.js  && echo 'module.exports.default = slippyTile;' >> main.js",
-    "pretest": "standard index.js && npm run prepublish",
-    "test": "node -r @std/esm test.js",
-    "posttest": "tsc types.ts && node types.js"
+    "pretest": "tsc",
+    "test": "node test.js",
+    "posttest": "tslint index.ts --project tsconfig.json"
   },
   "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
@@ -30,16 +25,12 @@
     "slippytile"
   ],
   "devDependencies": {
-    "@std/esm": "*",
-    "rollup": "*",
-    "standard": "*",
-    "tape": "*"
+    "@types/tape": "*",
+    "tape": "*",
+    "tslint": "*",
+    "typescript": "*"
   },
   "dependencies": {
     "global-mercator": "*"
-  },
-  "@std/esm": {
-    "esm": "js",
-    "cjs": true
   }
 }

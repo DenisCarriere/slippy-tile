@@ -9,10 +9,10 @@ slippy-tile.js
 pids
 *.pid
 *.seed
+*.js
 
 types.js
 dist
-yarn.lock
 
 npm-packages-offline-cache
 
